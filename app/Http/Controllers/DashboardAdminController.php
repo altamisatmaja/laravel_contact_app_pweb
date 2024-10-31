@@ -16,7 +16,7 @@ class DashboardAdminController extends Controller
         return view('admin.user');
     }
 
-    public function list_user(){
-        return view('admin.pages.user.index');
-    }
+    // public function list_user(){
+    //     return view('admin.pages.user.index');
+    // }
 }
