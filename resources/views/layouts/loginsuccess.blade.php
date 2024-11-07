@@ -15,7 +15,7 @@
         <div class="w-full max-w-sm bg-white p-6 rounded-lg shadow-lg">
             <div class="text-center mb-4">
                 <h5 class="text-xl text-[#112D55] font-semibold mb-2">
-                    <span class="text-3xl font-bold">Selamat Datang @yield('role')</span>
+                    <span class="text-3xl font-bold">Selamat Datang @yield('username')</span>
                 </h5>
             </div>
 

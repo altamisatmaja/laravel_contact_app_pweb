@@ -34,8 +34,8 @@
                     <input type="password" id="Password" name="Password" placeholder="Kata Sandi"
                         class="w-full p-3 border border-gray-300 rounded-md text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#112D55] focus:border-transparent">
                 </div>
-                <button type="submit" id="btnLoginAdmin"
-                        class="w-full py-3 bg-[#112D55] text-white font-semibold rounded-md hover:bg-gray-700 focus:ring-4 focus:ring-blue-300">
+                <button type="button" id="btnLoginAdmin"
+                        class="w-full py-3 bg-[#112D55] text-white font-semibold rounded-md hover:bg-gray-700 focus:ring-4 focus:ring-blue-300" onclick="window.location.href='{{ route('dashboard') }}'">
                     Masuk
                 </button>
             </form>

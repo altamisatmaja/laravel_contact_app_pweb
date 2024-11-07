@@ -21,5 +21,4 @@ Route::delete('/admin/dashboard/user/{id}', [MahasiswaResouceController::class, 
 // BELUM DIBUATKAN CONTROLLER DAN MODEL
 Route::get('/login', function () {return view('loginpage');})->name('loginpage');
 
-Route::get('/dashboarddosen', function () {return view('dosen.dashboarddosen');})->name('dashboarddosen');
-Route::get('/dashboardmahasiswa', function () {return view('mahasiswa.dashboardmahasiswa');})->name('dashboardmahasiswa');
+Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
