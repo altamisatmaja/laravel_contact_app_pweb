@@ -17,3 +17,9 @@ Route::post('/admin/dashboard/user/store', [MahasiswaResouceController::class, '
 
 Route::put('/admin/dashboard/user/{id}', [MahasiswaResouceController::class, 'store'])->name('admin.user.update.put');
 Route::delete('/admin/dashboard/user/{id}', [MahasiswaResouceController::class, 'store'])->name('admin.user.delete.delete');
+
+// BELUM DIBUATKAN CONTROLLER DAN MODEL
+Route::get('/login', function () {return view('loginpage');})->name('loginpage');
+
+Route::get('/dashboarddosen', function () {return view('dosen.dashboarddosen');})->name('dashboarddosen');
+Route::get('/dashboardmahasiswa', function () {return view('mahasiswa.dashboardmahasiswa');})->name('dashboardmahasiswa');
