@@ -22,7 +22,7 @@ class MahasiswaSeeder extends Seeder
             'tanggal_lahir' => '2003-07-24'
         ]]);
 
-        $this->deleteMahasiswa('232410102018');
+        $this->updateIdDpa('232410102018');
     }
 
     private function checkMahasiswaByNim($nim)
