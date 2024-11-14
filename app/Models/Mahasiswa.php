@@ -9,7 +9,6 @@ class Mahasiswa extends Model
 {
     use HasFactory;
 
-    // isi nilai nama table sesuai database
     protected $table = 'mahasiswa';
 
     protected $fillable = [
@@ -17,4 +16,9 @@ class Mahasiswa extends Model
         'nim',
         'tanggal_lahir'
     ];
+
+    public function dpa()
+    {
+        return $this->belongsTo(Dosen::class, 'id_dpa');
+    }
 }

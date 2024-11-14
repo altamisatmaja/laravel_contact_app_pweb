@@ -9,12 +9,16 @@ class Dosen extends Model
 {
     use HasFactory;
 
-    // isi nilai nama table sesuai database
-    protected $table = 'mahasiswa';
+    protected $table = 'dosen';
 
     protected $fillable = [
         'nama',
-        'nim',
+        'nidn',
         'tanggal_lahir'
     ];
+
+    public function mahasiswa()
+    {
+        return $this->hasMany(Mahasiswa::class, 'id_dpa');
+    }
 }
