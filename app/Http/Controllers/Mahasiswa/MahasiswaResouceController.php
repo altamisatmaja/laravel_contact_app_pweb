@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Mahasiswa;
 
 use App\Http\Controllers\Controller;
+use App\Models\Dosen;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,16 @@ class MahasiswaResouceController extends Controller
      */
     public function index()
     {
+        // CARA 1
+        // SELECT * FROM MAHASISWA WHERE ID 1
+        $mahasiswa = Mahasiswa::where('id', 1)->first();
+
+        // CARA 2
+        // $mahasiswa = Mahasiswa::find(1);
+        // $dosen = $mahasiswa->dosen;
+
+        // $dosen = Dosen::find($mahasiswa->id_dpa);
+
         $mahasiswaCollection = Mahasiswa::get();
 
         return view('admin.pages.user.index', compact('mahasiswaCollection'));
@@ -65,6 +76,13 @@ class MahasiswaResouceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $mahasiswa = Mahasiswa::find($id);
+            // dd($mahasiswa);
+            $mahasiswa->delete();
+            return redirect()->back();
+        } catch (\Exception $th) {
+            return redirect()->back()->withErrors($th->getMessage());
+        }
     }
 }

@@ -14,15 +14,26 @@ class MahasiswaSeeder extends Seeder
     {
         DB::table('mahasiswa')->insert([[
             'nama' => 'Athar',
+            'id_dpa' => 1,
             'nim' => '232410102064',
             'tanggal_lahir' => '2004-11-09'
         ], [
             'nama' => 'Lutfi',
+            'id_dpa' => 1,
             'nim' => '232410102035',
             'tanggal_lahir' => '2003-07-24'
         ]]);
 
-        $this->updateIdDpa('232410102018');
+        // $this->updateIdDpa('232410102018');
+    }
+
+    private function updateIdDpa($nim)
+    {
+        $mahasiswa = DB::table('mahasiswa')
+            ->where('nim', $nim)
+            ->update([
+                'id_dpa' => 1,
+            ]);
     }
 
     private function checkMahasiswaByNim($nim)

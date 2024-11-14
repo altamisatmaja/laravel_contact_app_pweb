@@ -50,7 +50,7 @@
                     </svg>
                 </button>
                 <div class="hidden lg:flex items-center">
-                    <span class="text-base font-normal text-gray-500 mr-5">{{ Auth::user()->username }}</span>
+                    {{-- <span class="text-base font-normal text-gray-500 mr-5">{{ Auth::user()->username }}</span> --}}
                     <div class="-mb-1">
                         <a class="github-button" href="#"
                             data-color-scheme="no-preference: dark; light: light; dark: light;" data-icon="octicon-star"

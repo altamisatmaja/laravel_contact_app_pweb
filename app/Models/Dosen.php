@@ -11,14 +11,16 @@ class Dosen extends Model
 
     protected $table = 'dosen';
 
+    // protected $primaryKey = 'id_dosen';
+
     protected $fillable = [
         'nama',
         'nidn',
         'tanggal_lahir'
     ];
 
-    public function mahasiswa()
-    {
-        return $this->hasMany(Mahasiswa::class, 'id_dpa');
-    }
+    // public function mahasiswa()
+    // {
+    //     return $this->hasMany(Mahasiswa::class, 'id_dpa');
+    // }
 }

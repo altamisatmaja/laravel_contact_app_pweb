@@ -14,11 +14,14 @@ class Mahasiswa extends Model
     protected $fillable = [
         'nama',
         'nim',
-        'tanggal_lahir'
+        'tanggal_lahir',
+        'id_dpa',
     ];
 
-    public function dpa()
+    public function dosen()
     {
-        return $this->belongsTo(Dosen::class, 'id_dpa');
+        return $this->belongsTo(
+            Dosen::class, 'id_dpa', 'id'
+        );
     }
 }

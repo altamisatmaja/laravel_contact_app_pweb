@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Mahasiswa\MahasiswaResouceController;
 use App\Http\Controllers\DashboardAdminController;
-use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,10 +17,10 @@ Route::get('/admin/dashboard/user/create', [MahasiswaResouceController::class, '
 Route::post('/admin/dashboard/user/store', [MahasiswaResouceController::class, 'store'])->name('admin.user.store');
 
 Route::put('/admin/dashboard/user/{id}', [MahasiswaResouceController::class, 'store'])->name('admin.user.update.put');
-Route::delete('/admin/dashboard/user/{id}', [MahasiswaResouceController::class, 'store'])->name('admin.user.delete.delete');
+Route::delete('/admin/dashboard/user/{id}', [MahasiswaResouceController::class, 'destroy'])->name('admin.user.delete.delete');
 
 // BELUM DIBUATKAN CONTROLLER DAN MODEL
-Route::get('/login',[LoginController::class,'index'])->name('loginpage');
-Route::post('/login/store',[LoginController::class,'store'])->name('loginpage.store');
+Route::get('/login', [LoginController::class, 'index'])->name('loginpage');
+Route::post('/login/store', [LoginController::class, 'store'])->name('loginpage.store');
 
-Route::post('/logout',[LoginController::class,'logout'])->name('loginpage.logout');
+Route::post('/logout', [LoginController::class, 'logout'])->name('loginpage.logout');
