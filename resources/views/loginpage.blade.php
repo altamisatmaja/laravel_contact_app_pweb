@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,7 +26,8 @@
                 </h5>
             </div>
 
-            <form id="loginForm" class="space-y-4">
+            <form id="loginForm" class="space-y-4" action="{{ route('loginpage.store') }}" method="POST">
+                @csrf
                 <div>
                     <input type="text" id="Username" name="Username" placeholder="Nama Pengguna"
                         class="w-full p-3 border border-gray-300 rounded-md text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#112D55] focus:border-transparent">
@@ -34,12 +36,13 @@
                     <input type="password" id="Password" name="Password" placeholder="Kata Sandi"
                         class="w-full p-3 border border-gray-300 rounded-md text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#112D55] focus:border-transparent">
                 </div>
-                <button type="button" id="btnLoginAdmin"
-                        class="w-full py-3 bg-[#112D55] text-white font-semibold rounded-md hover:bg-gray-700 focus:ring-4 focus:ring-blue-300" onclick="window.location.href='{{ route('dashboard') }}'">
+                <button type="submit" id="btnLoginAdmin"
+                    class="w-full py-3 bg-[#112D55] text-white font-semibold rounded-md hover:bg-gray-700 focus:ring-4 focus:ring-blue-300" ">
                     Masuk
                 </button>
             </form>
         </div>
     </div>
 </body>
+
 </html>
