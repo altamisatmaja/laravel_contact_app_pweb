@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Mahasiswa\MahasiswaResouceController;
 use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,6 +19,9 @@ Route::post('/admin/dashboard/user/store', [MahasiswaResouceController::class, '
 
 Route::put('/admin/dashboard/user/{id}', [MahasiswaResouceController::class, 'store'])->name('admin.user.update.put');
 Route::delete('/admin/dashboard/user/{id}', [MahasiswaResouceController::class, 'destroy'])->name('admin.user.delete.delete');
+
+// anak baru nih, produk
+Route::resource('products', ProductController::class);
 
 // BELUM DIBUATKAN CONTROLLER DAN MODEL
 Route::get('/login', [LoginController::class, 'index'])->name('loginpage');
