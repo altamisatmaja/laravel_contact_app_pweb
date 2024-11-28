@@ -21,6 +21,7 @@ Route::put('/admin/dashboard/user/{id}', [MahasiswaResouceController::class, 'st
 Route::delete('/admin/dashboard/user/{id}', [MahasiswaResouceController::class, 'destroy'])->name('admin.user.delete.delete');
 
 // anak baru nih, produk
+Route::get('products/{id}/destory', [ProductController::class, 'destroy'])->name('product.destroy.new');
 Route::resource('products', ProductController::class);
 
 // BELUM DIBUATKAN CONTROLLER DAN MODEL

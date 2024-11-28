@@ -14,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('products.index');
+        $products = Product::all();
+        return view('products.index', compact('products'));
     }
 
 
@@ -31,26 +32,31 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'price' => 'required|integer',
-            'description' => 'required',
-            'image' => 'nullable|image|mimes:png,jpg,jpeg|max:2048'
-        ]);
+        try {
+            $request->validate([
+                'name' => 'required',
+                'price' => 'required|integer',
+                'description' => 'required',
+                'image' => 'nullable|image|mimes:png,jpg,jpeg|max:2048'
+            ]);
 
-        $imagePath = null;
-        if ($request->file('image')) {
-            $imagePath = $request->file('image')->store('products', 'public');
+            $imagePath = null;
+            if ($request->file('image')) {
+                $imagePath = $request->file('image')->store('products', 'public');
+            }
+
+            Product::create([
+                'name' => $request->name,
+                'price' => $request->price,
+                'description' => $request->description,
+                'image' => $imagePath
+            ]);
+
+            return redirect()->route('products.index')->with('success', 'Produk berhasil ditambahkan!');
+        } catch (\Exception $th) {
+            dd($th->getMessage());
+            //throw $th;
         }
-
-        Product::create([
-            'name' => $request->name,
-            'price' => $request->price,
-            'description' => $request->description,
-            'image' => $imagePath
-        ]);
-
-        return redirect()->route('products.index')->with('success', 'Produk berhasil ditambahkan!');
     }
 
     /**
@@ -85,9 +91,12 @@ class ProductController extends Controller
     {
         try{
             $product = Product::findOrFail($id);
+            // dd($product);
 
             File::delete($product->image);
             $product->delete();
+
+            return redirect()->back()->with('success', 'Data berhasil ditambahkan');
         } catch(\Exception $e){
             dd($e->getMessage());
         }
