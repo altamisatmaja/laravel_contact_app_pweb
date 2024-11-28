@@ -22,6 +22,5 @@ class ProductSeeder extends Seeder
             'price' => 6000,
             'description' => 'Enak dinikmati setelah dari pantai!',
         ]);
-
     }
 }

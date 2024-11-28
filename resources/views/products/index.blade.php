@@ -46,26 +46,27 @@
     <div id="addProductModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
         <div class="bg-white p-6 rounded shadow-md w-96">
             <h2 class="text-lg font-bold mb-4">Tambah Produk</h2>
-            <form>
+            <form action="{{route('products.store')}}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="mb-4">
                     <label for="name" class="block text-sm">Nama Produk</label>
-                    <input type="text" id="name" class="border p-2 w-full rounded">
+                    <input type="text" id="name" name="name" class="border p-2 w-full rounded">
                 </div>
                 <div class="mb-4">
                     <label for="price" class="block text-sm">Harga Produk</label>
-                    <input type="number" id="price" class="border p-2 w-full rounded">
+                    <input type="number" id="price" name="price" class="border p-2 w-full rounded">
                 </div>
                 <div class="mb-4">
                     <label for="description" class="block text-sm">Deskripsi Produk</label>
-                    <textarea id="description" class="border p-2 w-full rounded"></textarea>
+                    <textarea id="description" name="description" class="border p-2 w-full rounded"></textarea>
                 </div>
                 <div class="mb-4">
                     <label for="image" class="block text-sm">Gambar Produk</label>
-                    <input type="file" id="image" class="border p-2 w-full rounded">
+                    <input type="file" id="image" name="image" class="border p-2 w-full rounded">
                 </div>
                 <div class="flex justify-end space-x-2">
                     <button type="button" class="px-4 py-2 bg-gray-300 rounded" onclick="document.getElementById('addProductModal').classList.add('hidden')">Batal</button>
-                    <button type="button" class="px-4 py-2 bg-blue-500 text-white rounded">Simpan</button>
+                    <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Simpan</button>
                 </div>
             </form>
         </div>

@@ -13,7 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-
+        return view('products.index');
     }
 
 
@@ -30,7 +30,26 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required|integer',
+            'description' => 'required',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg|max:2048'
+        ]);
 
+        $imagePath = null;
+        if ($request->file('image')) {
+            $imagePath = $request->file('image')->store('products', 'public');
+        }
+
+        Product::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'description' => $request->description,
+            'image' => $imagePath
+        ]);
+
+        return redirect()->route('products.index')->with('success', 'Produk berhasil ditambahkan!');
     }
 
     /**
@@ -63,7 +82,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        
+
     }
 
 }
