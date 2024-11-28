@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Product;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -80,9 +81,16 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
+        try{
+            $product = Product::findOrFail($id);
 
+            File::delete($product->image);
+            $product->delete();
+        } catch(\Exception $e){
+            dd($e->getMessage());
+        }
     }
 
 }
